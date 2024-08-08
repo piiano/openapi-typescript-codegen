@@ -1,9 +1,11 @@
-{{#if parameters}}
-{{#if @root.useOptions~}}
+{{~#if @root.useOptions}}
 {
 {{#each parameters}}
 {{{name}}}{{#if default}} = {{{default}}}{{/if}},
 {{/each}}
+{{#if @root.useOptions}}
+additionalHeaders = {},
+{{/if}}
 }: {
 {{#each parameters}}
 {{#ifdef description deprecated}}
@@ -18,8 +20,10 @@
 {{/ifdef}}
 {{{name}}}{{>isRequired}}: {{>type}},
 {{/each}}
-}
+additionalHeaders?: Record<string, string>,
+}{{#unless parameters}} = {}{{/unless}}
 {{~else}}
+{{#if parameters}}
 
 {{#each parameters}}
 {{{name}}}{{>isRequired}}: {{>type}}{{#if default}} = {{{default}}}{{/if}},

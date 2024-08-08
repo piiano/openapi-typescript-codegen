@@ -105,10 +105,17 @@ export class {{{name}}}{{{@root.postfix}}} {
 			{{/if}}
 			{{#if parametersHeader}}
 			headers: {
+				{{#if @root.useOptions}}
+				...additionalHeaders,
+				{{/if}}
 				{{#each parametersHeader}}
 				'{{{prop}}}': {{{name}}},
 				{{/each}}
 			},
+			{{else}}
+			{{#if @root.useOptions}}
+			headers: additionalHeaders,
+			{{/if}}
 			{{/if}}
 			{{#if parametersQuery}}
 			query: {
