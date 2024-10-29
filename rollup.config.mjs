@@ -29,6 +29,7 @@ const handlebarsPlugin = () => ({
                 preventIndent: true,
                 knownHelpersOnly: true,
                 knownHelpers: {
+                    hasRequired: true,
                     ifdef: true,
                     equals: true,
                     notEquals: true,

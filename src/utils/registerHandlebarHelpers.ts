@@ -12,6 +12,10 @@ export const registerHandlebarHelpers = (root: {
     useOptions: boolean;
     useUnionTypes: boolean;
 }): void => {
+    Handlebars.registerHelper('hasRequired', function (parameters?: { isRequired?: boolean }[]): boolean {
+        return parameters?.some(param => param.isRequired) ?? false;
+    });
+
     Handlebars.registerHelper('ifdef', function (this: any, ...args): string {
         const options = args.pop();
         if (!args.every(value => !value)) {
