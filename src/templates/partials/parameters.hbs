@@ -21,7 +21,7 @@ additionalHeaders = {},
 {{{name}}}{{>isRequired}}: {{>type}},
 {{/each}}
 additionalHeaders?: Record<string, string>,
-}{{#unless parameters}} = {}{{/unless}}
+}{{#unless (hasRequired parameters)}} = {}{{/unless}}
 {{~else}}
 {{#if parameters}}
 
